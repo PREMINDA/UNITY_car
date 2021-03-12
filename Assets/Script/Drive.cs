@@ -11,7 +11,7 @@ public class Drive : MonoBehaviour
         WH = this.GetComponent<WheelCollider>();
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         float VER = Input.GetAxis("Vertical");
@@ -23,5 +23,10 @@ public class Drive : MonoBehaviour
         acceleration = Mathf.Clamp(acceleration, -1, 1);
         float thrustTorque = acceleration * torque;
         WH.motorTorque = thrustTorque;
+        Quaternion qut;
+        Vector3 pos;
+        WH.GetWorldPose(out pos,out qut);
+        this.transform.position = pos;
+        this.transform.rotation = qut;
     }
 }
