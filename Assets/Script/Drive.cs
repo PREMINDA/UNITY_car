@@ -6,6 +6,7 @@ public class Drive : MonoBehaviour
 {
     [SerializeField] private WheelCollider WH;
     public float torque = 200;
+    public GameObject Wheel;
     void Start()
     {
         WH = this.GetComponent<WheelCollider>();
@@ -26,7 +27,7 @@ public class Drive : MonoBehaviour
         Quaternion qut;
         Vector3 pos;
         WH.GetWorldPose(out pos,out qut);
-        this.transform.position = pos;
-        this.transform.rotation = qut;
+        Wheel.transform.position = pos;
+        Wheel.transform.rotation = qut;
     }
 }
